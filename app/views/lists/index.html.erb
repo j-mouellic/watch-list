@@ -1,0 +1,13 @@
+<section class="layout">
+  <%= render "shared/header" %>
+  <main class="main">
+    <h1>list index</h1>
+
+    <% @lists.each do |list| %>
+      <li><%= link_to list.name, list_path(list) %></li>
+    <% end %>
+
+    <%= link_to "Créer une nouvelle liste", new_list_path %>
+  </main>
+  <%= render "shared/footer" %>
+</section>

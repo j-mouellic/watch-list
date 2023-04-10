@@ -1,0 +1,31 @@
+<section class="layout">
+  <%= render "shared/header" %>
+  <main class="main">
+    <h1><%= @list.name %></h1>
+
+    <section class="grid-movies">
+      <% @list.movies.each do |movie| %>
+      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+      <section class="movie-card">
+        <figcaption>
+          <%= image_tag movie.poster_url, alt: movie.title, class: "movie-img" %>
+        </figcaption>
+        <div class="title">
+          <h1><%= movie.title %></h1>
+          <p><%= movie.rating %></p>
+        </div>
+        <p><%= movie.overview %></p>
+        <%= link_to "supprimer", bookmark_path(bookmark), data: {turbo_method: :delete} %>
+      </section>
+    <% end %>
+    </section>
+
+
+    <%= link_to "retour aux listes", lists_path %>
+
+    <%= render "bookmarks/new" %>
+
+    <%= render "reviews/new" %>
+  </main>
+  <%= render "shared/footer" %>
+</section>

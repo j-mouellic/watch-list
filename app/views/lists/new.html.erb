@@ -1,0 +1,12 @@
+<section class="layout">
+  <%= render "shared/header" %>
+  <main class="main">
+    <h1>Nouvelle liste</h1>
+
+    <%= simple_form_for @list do |f| %>
+      <%= f.input :name %>
+      <%= f.button :submit %>
+    <% end %>
+  </main>
+  <%= render "shared/footer" %>
+</section>
